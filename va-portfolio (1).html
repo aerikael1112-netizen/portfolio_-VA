@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="vi" data-lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtual Assistant Portfolio — Nhi Le</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #fdf6f0;
+  --bg2:      #f5ede4;
+  --bg3:      #ede5f8;
+  --card:     #ffffff;
+  --ink:      #2d2320;
+  --ink2:     #6b5f5a;
+  --rose:     #e8a4a4;
+  --rose-d:   #c97b7b;
+  --lavender: #b8a8d8;
+  --lav-d:    #8a78b8;
+  --sage:     #a8c4b0;
+  --sage-d:   #6a9478;
+  --peach:    #f0c4a0;
+  --peach-d:  #d4905a;
+  --sky:      #a8c8e0;
+  --sky-d:    #5a8eb0;
+  --mint:     #a8d8c8;
+  --mint-d:   #4a9880;
+  --gold:     #d4b87a;
+  --accent:   #c97b7b;
+  --accent2:  #8a78b8;
+  --shadow:   rgba(180,140,120,0.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+}
+
+/* LANG TOGGLE */
+[data-lang="vi"] .en { display:none !important; }
+[data-lang="en"] .vi { display:none !important; }
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 3rem;
+  background:rgba(253,246,240,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(200,160,140,0.15);
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-weight:700;letter-spacing:0.02em;
+  color:var(--ink);
+}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{
+  font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--ink2);text-decoration:none;font-weight:500;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--accent);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.remote-badge-nav{
+  background:linear-gradient(135deg,var(--rose),var(--peach));
+  color:#fff;font-size:0.62rem;font-weight:600;letter-spacing:0.12em;
+  padding:0.35rem 0.9rem;border-radius:100px;text-transform:uppercase;
+  box-shadow:0 2px 8px rgba(200,120,100,0.25);
+}
+.lang-toggle{
+  display:flex;background:var(--bg2);border-radius:100px;
+  padding:3px;gap:2px;border:1px solid rgba(200,160,140,0.2);
+}
+.lang-btn{
+  padding:0.25rem 0.75rem;border:none;background:transparent;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.7rem;font-weight:600;letter-spacing:0.06em;
+  border-radius:100px;cursor:pointer;color:var(--ink2);
+  transition:background .2s,color .2s;
+}
+.lang-btn.active{background:#fff;color:var(--accent);box-shadow:0 1px 4px var(--shadow);}
+
+/* HERO */
+#hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1.1fr 0.9fr;
+  align-items:center;
+  padding:8rem 3rem 4rem;
+  position:relative;overflow:hidden;
+  background:linear-gradient(145deg,var(--bg) 60%,var(--bg2));
+}
+.hero-blob{
+  position:absolute;right:-10%;top:10%;
+  width:55vw;height:55vw;max-width:700px;max-height:700px;
+  background:radial-gradient(ellipse,rgba(184,168,216,0.18) 0%,rgba(232,164,164,0.12) 50%,transparent 70%);
+  border-radius:50%;pointer-events:none;
+  animation:blobFloat 8s ease-in-out infinite;
+}
+@keyframes blobFloat{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.04) translateY(-20px)}}
+.hero-left{z-index:1;}
+.remote-pill{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:linear-gradient(135deg,var(--rose),var(--peach));
+  color:#fff;font-size:0.72rem;font-weight:600;letter-spacing:0.15em;
+  text-transform:uppercase;padding:0.45rem 1.1rem;border-radius:100px;
+  margin-bottom:1.8rem;
+  box-shadow:0 4px 16px rgba(200,120,100,0.25);
+  animation:pillPulse 2.5s ease-in-out infinite;
+}
+.remote-dot{width:6px;height:6px;border-radius:50%;background:#fff;animation:blink 1.2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+@keyframes pillPulse{0%,100%{box-shadow:0 4px 16px rgba(200,120,100,0.25)}50%{box-shadow:0 4px 28px rgba(200,120,100,0.45)}}
+.hero-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.72rem;letter-spacing:0.08em;color:var(--ink2);
+  margin-bottom:1.2rem;display:flex;align-items:center;gap:0.6rem;
+}
+.hero-tag::before{content:'';width:2rem;height:1px;background:var(--rose-d);}
+h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,5.5vw,5rem);font-weight:700;line-height:1.0;
+  letter-spacing:-0.01em;margin-bottom:0.4rem;
+  background:linear-gradient(135deg,var(--ink) 40%,var(--rose-d));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-subtitle{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.1rem,2.2vw,1.6rem);
+  color:var(--lav-d);font-style:italic;
+  margin-bottom:1.6rem;
+}
+.hero-desc{
+  font-size:0.95rem;line-height:1.85;color:var(--ink2);
+  max-width:44ch;margin-bottom:2.2rem;
+}
+.hero-cta-row{display:flex;gap:0.9rem;flex-wrap:wrap;}
+.btn-primary{
+  background:linear-gradient(135deg,var(--rose-d),var(--peach-d));
+  color:#fff;padding:0.8rem 1.8rem;text-decoration:none;
+  font-size:0.78rem;font-weight:600;letter-spacing:0.08em;
+  text-transform:uppercase;border-radius:100px;
+  box-shadow:0 4px 16px rgba(200,100,80,0.25);
+  transition:transform .2s,box-shadow .2s;display:inline-block;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(200,100,80,0.35);}
+.btn-outline{
+  border:1.5px solid var(--lav-d);color:var(--lav-d);
+  padding:0.8rem 1.8rem;text-decoration:none;
+  font-size:0.78rem;font-weight:600;letter-spacing:0.08em;
+  text-transform:uppercase;border-radius:100px;
+  transition:background .2s,color .2s;display:inline-block;
+}
+.btn-outline:hover{background:var(--lav-d);color:#fff;}
+
+/* Hero right stats */
+.hero-right{
+  z-index:1;display:flex;flex-direction:column;align-items:flex-end;gap:1.2rem;
+}
+.stat-card{
+  background:var(--card);
+  padding:1.4rem 1.8rem;text-align:right;
+  width:210px;border-radius:16px;
+  box-shadow:0 4px 20px var(--shadow);
+  border:1px solid rgba(220,190,180,0.2);
+  animation:floatCard 5s ease-in-out infinite;
+}
+.stat-card:nth-child(2){animation-delay:-1.6s;}
+.stat-card:nth-child(3){animation-delay:-3.2s;}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.2rem;font-weight:700;
+  background:linear-gradient(135deg,var(--rose-d),var(--lav-d));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1;
+}
+.stat-label{font-size:0.72rem;color:var(--ink2);margin-top:0.3rem;line-height:1.4;}
+
+/* SECTIONS */
+section{padding:6rem 3rem;}
+.section-header{margin-bottom:3.5rem;}
+.section-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.65rem;color:var(--accent);letter-spacing:0.15em;
+  margin-bottom:0.5rem;display:block;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;
+  line-height:1.1;
+}
+.divider{width:2.5rem;height:3px;margin-top:0.8rem;border-radius:2px;}
+.divider-rose{background:linear-gradient(90deg,var(--rose),var(--peach));}
+.divider-lav{background:linear-gradient(90deg,var(--lavender),var(--sky));}
+.divider-sage{background:linear-gradient(90deg,var(--sage),var(--mint));}
+
+/* ─── DASHBOARD ─── */
+#skills{
+  background:linear-gradient(160deg,var(--bg3) 0%,var(--bg2) 100%);
+}
+.dashboard-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;
+}
+.dash-col{
+  background:var(--card);border-radius:20px;
+  padding:2rem;
+  box-shadow:0 4px 24px var(--shadow);
+  border:1px solid rgba(200,180,220,0.15);
+}
+.skill-group-title{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;
+  margin-bottom:1.5rem;padding-bottom:0.6rem;
+  border-bottom:1px solid rgba(180,160,200,0.2);
+}
+.sg-soft{color:var(--lav-d);}
+.sg-hard{color:var(--rose-d);}
+.sg-adv{color:var(--sage-d);}
+.sg-ws{color:var(--sky-d);}
+
+.skill-bar-item{margin-bottom:1.2rem;}
+.skill-bar-header{
+  display:flex;justify-content:space-between;align-items:baseline;
+  margin-bottom:0.4rem;
+}
+.skill-name{font-size:0.84rem;font-weight:500;color:var(--ink);}
+.skill-pct{font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:500;}
+.pct-rose{color:var(--rose-d);}
+.pct-lav{color:var(--lav-d);}
+.pct-sage{color:var(--sage-d);}
+.pct-sky{color:var(--sky-d);}
+
+.skill-bar-track{
+  height:6px;background:rgba(180,160,200,0.15);border-radius:100px;overflow:hidden;
+}
+.skill-bar-fill{
+  height:100%;border-radius:100px;width:0;
+  transition:width 1.3s cubic-bezier(.4,0,.2,1);
+}
+.fill-rose{background:linear-gradient(90deg,var(--rose),var(--peach));}
+.fill-lav{background:linear-gradient(90deg,var(--lavender),var(--sky));}
+.fill-sage{background:linear-gradient(90deg,var(--sage),var(--mint));}
+.fill-sky{background:linear-gradient(90deg,var(--sky),var(--lavender));}
+
+/* Advanced cards grid inside dashboard */
+.adv-mini-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:0.7rem;margin-top:0.5rem;
+}
+.adv-mini{
+  background:linear-gradient(135deg,rgba(184,168,216,0.12),rgba(168,200,224,0.1));
+  border:1px solid rgba(180,160,220,0.18);
+  border-radius:12px;padding:0.9rem 0.8rem;text-align:center;
+}
+.adv-mini-pct{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:700;color:var(--lav-d);line-height:1;
+}
+.adv-mini-label{font-size:0.65rem;color:var(--ink2);margin-top:0.25rem;line-height:1.3;}
+
+/* Workspace tools chips inside dashboard */
+.ws-chips{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;}
+.ws-chip{
+  font-size:0.72rem;font-weight:500;
+  padding:0.3rem 0.8rem;border-radius:100px;
+  border:1px solid rgba(90,142,176,0.3);
+  color:var(--sky-d);background:rgba(168,200,224,0.12);
+}
+
+/* ─── CERTIFICATIONS ─── */
+#certs{background:var(--bg);}
+.certs-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;
+}
+.cert-card{
+  background:var(--card);border-radius:16px;padding:1.5rem;
+  border:1px solid rgba(200,180,180,0.15);
+  box-shadow:0 2px 12px var(--shadow);
+  display:flex;flex-direction:column;gap:0.5rem;
+  transition:transform .2s,box-shadow .2s;
+}
+.cert-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px var(--shadow);}
+.cert-badge{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.25rem 0.7rem;border-radius:100px;width:fit-content;
+}
+.badge-hs{background:rgba(232,164,164,0.18);color:var(--rose-d);}
+.badge-gg{background:rgba(168,200,224,0.2);color:var(--sky-d);}
+.badge-gen{background:rgba(184,168,216,0.18);color:var(--lav-d);}
+.cert-title{font-size:0.88rem;font-weight:600;color:var(--ink);line-height:1.3;}
+.cert-issuer{font-size:0.75rem;color:var(--ink2);}
+
+/* ─── SERVICES ─── */
+#services{background:var(--bg2);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;}
+.svc-card{
+  background:var(--card);padding:1.8rem;
+  border-radius:16px;
+  border-top:4px solid transparent;
+  box-shadow:0 2px 14px var(--shadow);
+  transition:transform .2s,box-shadow .2s;
+}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px var(--shadow);}
+.svc-c1{border-top-color:var(--rose);}
+.svc-c2{border-top-color:var(--lavender);}
+.svc-c3{border-top-color:var(--sage);}
+.svc-c4{border-top-color:var(--sky);}
+.svc-c5{border-top-color:var(--peach);}
+.svc-c6{border-top-color:var(--mint);}
+.svc-c7{border-top-color:var(--gold);}
+.svc-icon{font-size:1.6rem;margin-bottom:0.8rem;}
+.svc-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;margin-bottom:0.5rem;}
+.svc-desc{font-size:0.82rem;color:var(--ink2);line-height:1.7;}
+.remote-tag{
+  display:inline-block;margin-top:0.8rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.58rem;letter-spacing:0.1em;
+  background:linear-gradient(135deg,var(--rose),var(--peach));
+  color:#fff;padding:0.18rem 0.6rem;border-radius:100px;
+}
+
+/* ─── REMOTE READINESS ─── */
+#remote{
+  background:linear-gradient(150deg,#f0e8f8 0%,#fde8e8 50%,#e8f4f0 100%);
+  position:relative;overflow:hidden;
+}
+#remote::after{
+  content:'REMOTE';
+  position:absolute;right:-3rem;bottom:-2rem;
+  font-family:'Cormorant Garamond',serif;font-size:clamp(6rem,16vw,14rem);
+  font-weight:700;color:rgba(200,120,120,0.06);pointer-events:none;line-height:1;
+}
+.remote-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.remote-card{
+  background:rgba(255,255,255,0.7);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(200,180,220,0.2);
+  padding:1.8rem;border-radius:16px;
+  box-shadow:0 4px 20px rgba(180,140,180,0.08);
+}
+.remote-card-icon{font-size:1.5rem;margin-bottom:0.7rem;}
+.remote-card-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;margin-bottom:0.5rem;}
+.remote-card-desc{font-size:0.82rem;color:var(--ink2);line-height:1.7;}
+
+/* Remote specs row */
+.remote-specs{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;
+  margin-top:2rem;
+}
+.spec-card{
+  background:rgba(255,255,255,0.8);border-radius:14px;
+  padding:1.2rem;text-align:center;
+  border:1px solid rgba(200,180,220,0.2);
+  box-shadow:0 2px 10px rgba(180,140,180,0.08);
+}
+.spec-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:700;
+  color:var(--lav-d);line-height:1;
+}
+.spec-label{font-size:0.72rem;color:var(--ink2);margin-top:0.3rem;line-height:1.4;}
+
+.timezone-bar{
+  background:rgba(255,255,255,0.65);border:1px solid rgba(200,180,220,0.2);
+  padding:1.3rem 1.8rem;border-radius:14px;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;margin-top:1.5rem;
+  backdrop-filter:blur(8px);
+}
+.tz-item{text-align:center;}
+.tz-city{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink2);}
+.tz-time{font-family:'JetBrains Mono',monospace;font-size:1rem;font-weight:500;color:var(--lav-d);}
+
+/* ─── TOOLS ─── */
+#tools{background:var(--bg);}
+.tools-section-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.tool-group-title{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.tg-ai{color:var(--rose-d);}
+.tg-pm{color:var(--lav-d);}
+.tg-sm{color:var(--sage-d);}
+.tg-comm{color:var(--sky-d);}
+.tools-chips{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;}
+.tool-chip{
+  font-size:0.75rem;font-weight:500;
+  padding:0.35rem 0.9rem;border-radius:100px;
+  border:1.5px solid;cursor:default;
+  transition:background .15s,color .15s,transform .15s;
+}
+.tool-chip:hover{transform:translateY(-2px);}
+.chip-ai{border-color:var(--rose);color:var(--rose-d);background:rgba(232,164,164,0.08);}
+.chip-ai:hover{background:var(--rose);color:#fff;}
+.chip-pm{border-color:var(--lavender);color:var(--lav-d);background:rgba(184,168,216,0.08);}
+.chip-pm:hover{background:var(--lavender);color:#fff;}
+.chip-sm{border-color:var(--sage);color:var(--sage-d);background:rgba(168,196,176,0.08);}
+.chip-sm:hover{background:var(--sage);color:#fff;}
+.chip-comm{border-color:var(--sky);color:var(--sky-d);background:rgba(168,200,224,0.08);}
+.chip-comm:hover{background:var(--sky);color:#fff;}
+.chip-data{border-color:var(--peach);color:var(--peach-d);background:rgba(240,196,160,0.08);}
+.chip-data:hover{background:var(--peach);color:#fff;}
+
+/* ─── PROJECTS ─── */
+#projects{background:var(--bg2);}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;}
+.project-card{
+  background:var(--card);border-radius:16px;padding:2rem;
+  border:1px solid rgba(200,180,180,0.15);
+  box-shadow:0 2px 14px var(--shadow);
+  transition:transform .2s,box-shadow .2s;
+}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px var(--shadow);}
+.project-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.62rem;letter-spacing:0.1em;color:var(--rose-d);margin-bottom:0.7rem;
+}
+.project-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;margin-bottom:0.5rem;}
+.project-desc{font-size:0.82rem;color:var(--ink2);line-height:1.7;}
+.project-result{
+  margin-top:1rem;padding:0.7rem 1rem;
+  background:linear-gradient(135deg,rgba(232,164,164,0.12),rgba(240,196,160,0.1));
+  border-left:3px solid var(--rose);border-radius:0 8px 8px 0;
+  font-size:0.8rem;font-weight:600;color:var(--rose-d);
+}
+
+/* ─── CONTACT ─── */
+#contact{background:linear-gradient(160deg,var(--bg3),var(--bg));}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contact-intro{font-size:0.95rem;line-height:1.85;color:var(--ink2);max-width:42ch;}
+.contact-list{display:flex;flex-direction:column;gap:0.9rem;}
+.contact-item{
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem 1.4rem;background:var(--card);
+  border-radius:12px;border:1px solid rgba(200,180,220,0.18);
+  text-decoration:none;color:var(--ink);
+  box-shadow:0 2px 10px var(--shadow);
+  transition:transform .15s,box-shadow .15s;
+}
+.contact-item:hover{transform:translateX(5px);box-shadow:0 4px 18px var(--shadow);}
+.contact-item-icon{font-size:1.1rem;}
+.contact-item-label{font-size:0.7rem;color:var(--ink2);display:block;}
+.contact-item-val{font-size:0.88rem;font-weight:600;}
+
+/* FOOTER */
+footer{
+  background:var(--ink);color:rgba(255,255,255,0.4);
+  text-align:center;padding:1.8rem;
+  font-size:0.75rem;letter-spacing:0.06em;
+}
+footer span{color:var(--rose);}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0.9rem 1.5rem;}
+  .nav-links{display:none;}
+  #hero{grid-template-columns:1fr;padding:7rem 1.5rem 3rem;}
+  .hero-right{align-items:flex-start;flex-direction:row;flex-wrap:wrap;}
+  .stat-card{width:160px;}
+  section{padding:4rem 1.5rem;}
+  .dashboard-grid,.remote-grid,.project-grid,.contact-grid,.tools-section-grid{grid-template-columns:1fr;}
+  .hero-blob{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Nhi Le · VA</div>
+  <ul class="nav-links">
+    <li><a href="#skills"><span class="vi">Kỹ năng</span><span class="en">Skills</span></a></li>
+    <li><a href="#certs"><span class="vi">Chứng chỉ</span><span class="en">Certs</span></a></li>
+    <li><a href="#services"><span class="vi">Dịch vụ</span><span class="en">Services</span></a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#remote">Remote</a></li>
+    <li><a href="#projects">Portfolio</a></li>
+    <li><a href="#contact"><span class="vi">Liên hệ</span><span class="en">Contact</span></a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="remote-badge-nav">🌐 Remote-Ready</div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('vi')">VI</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blob"></div>
+  <div class="hero-left fade-in">
+    <div class="remote-pill"><span class="remote-dot"></span>
+      <span class="vi">Sẵn sàng làm việc Remote</span>
+      <span class="en">Available for Remote Work</span>
+    </div>
+    <div class="hero-tag vi">Virtual Assistant · Thương hiệu & Dữ liệu</div>
+    <div class="hero-tag en">Virtual Assistant · Brand & Data Specialist</div>
+    <h1>Nhi Le</h1>
+    <div class="hero-subtitle vi">Trợ lý từ xa đáng tin cậy của bạn.</div>
+    <div class="hero-subtitle en">Your Reliable Remote Right Hand.</div>
+    <p class="hero-desc vi">Chiến lược thương hiệu · Phân tích dữ liệu · Công cụ AI · Quản lý nội dung đa nền tảng. Hỗ trợ toàn diện — từ bất kỳ múi giờ nào, không rào cản địa lý.</p>
+    <p class="hero-desc en">Brand Strategy · Data Analytics · AI Tools · Multi-platform content management. Full-scope support — any timezone, zero geographical barriers.</p>
+    <div class="hero-cta-row">
+      <a href="#contact" class="btn-primary"><span class="vi">Làm việc cùng tôi</span><span class="en">Work With Me</span></a>
+      <a href="#projects" class="btn-outline"><span class="vi">Xem Portfolio</span><span class="en">View Portfolio</span></a>
+    </div>
+  </div>
+  <div class="hero-right fade-in" style="transition-delay:.2s">
+    <div class="stat-card">
+      <div class="stat-num">300%</div>
+      <div class="stat-label vi">ROI đạt được — 3 tháng, zero paid ads</div>
+      <div class="stat-label en">ROI achieved — 3 months, zero paid ads</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">60 WPM</div>
+      <div class="stat-label vi">Tốc độ đánh máy — làm việc remote hiệu quả</div>
+      <div class="stat-label en">Typing speed — efficient remote work</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">100%</div>
+      <div class="stat-label vi">Remote-ready · Bảo mật thông tin đã được chứng minh</div>
+      <div class="stat-label en">Remote-ready · Proven confidential data handling</div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD / SKILLS -->
+<section id="skills">
+  <div class="section-header fade-in">
+    <span class="section-num">01 — Dashboard</span>
+    <h2 class="section-title"><span class="vi">Kỹ năng tổng quan</span><span class="en">Skills Overview</span></h2>
+    <div class="divider divider-lav"></div>
+  </div>
+
+  <div class="dashboard-grid fade-in">
+    <!-- COL LEFT: Soft + Hard -->
+    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+
+      <!-- Soft Skills -->
+      <div class="dash-col">
+        <div class="skill-group-title sg-soft">// <span class="vi">Kỹ năng mềm</span><span class="en">Soft Skills</span></div>
+
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Truyền thông & Giao tiếp</span><span class="en">Communication</span></span><span class="skill-pct pct-lav">92%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-lav" data-w="92"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Giải quyết vấn đề</span><span class="en">Problem Solving</span></span><span class="skill-pct pct-lav">90%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-lav" data-w="90"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Quản lý thời gian</span><span class="en">Time Management</span></span><span class="skill-pct pct-lav">95%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-lav" data-w="95"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Tỉ mỉ & Chú ý chi tiết</span><span class="en">Attention to Detail</span></span><span class="skill-pct pct-lav">96%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-lav" data-w="96"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Tư duy phản biện</span><span class="en">Critical Thinking</span></span><span class="skill-pct pct-lav">88%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-lav" data-w="88"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Đạo đức làm việc</span><span class="en">Work Ethics</span></span><span class="skill-pct pct-lav">98%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-lav" data-w="98"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Khả năng thích nghi</span><span class="en">Adaptability</span></span><span class="skill-pct pct-lav">93%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-lav" data-w="93"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Làm việc nhóm & Lãnh đạo</span><span class="en">Teamwork & Leadership</span></span><span class="skill-pct pct-lav">87%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-lav" data-w="87"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Kỹ năng tổ chức</span><span class="en">Organizational Skills</span></span><span class="skill-pct pct-lav">94%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-lav" data-w="94"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Làm việc độc lập</span><span class="en">Independent Work</span></span><span class="skill-pct pct-lav">96%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-lav" data-w="96"></div></div>
+        </div>
+      </div>
+
+      <!-- Hard Skills bắt buộc -->
+      <div class="dash-col">
+        <div class="skill-group-title sg-hard">// <span class="vi">Kỹ năng cứng bắt buộc</span><span class="en">Core Hard Skills</span></div>
+
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Quản lý email & lịch</span><span class="en">Email & Calendar Management</span></span><span class="skill-pct pct-rose">95%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-rose" data-w="95"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Nhập liệu & Tổ chức tài liệu</span><span class="en">Data Entry & File Organisation</span></span><span class="skill-pct pct-rose">94%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-rose" data-w="94"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Nghiên cứu & Tổng hợp</span><span class="en">Research & Synthesis</span></span><span class="skill-pct pct-rose">91%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-rose" data-w="91"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Quản lý dự án cơ bản</span><span class="en">Basic Project Management</span></span><span class="skill-pct pct-rose">88%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-rose" data-w="88"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Hỗ trợ khách hàng</span><span class="en">Customer Support</span></span><span class="skill-pct pct-rose">90%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-rose" data-w="90"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Tốc độ đánh máy</span><span class="en">Typing Speed (60+ WPM)</span></span><span class="skill-pct pct-rose">90%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-rose" data-w="90"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Tạo báo cáo sau cuộc họp</span><span class="en">Meeting Report Writing</span></span><span class="skill-pct pct-rose">92%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-rose" data-w="92"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Xử lý thông tin mật</span><span class="en">Confidential Info Handling</span></span><span class="skill-pct pct-rose">98%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-rose" data-w="98"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COL RIGHT: Advanced + Workspace -->
+    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+
+      <!-- Advanced Skills -->
+      <div class="dash-col">
+        <div class="skill-group-title sg-adv">// <span class="vi">Kỹ năng yêu cầu cao</span><span class="en">Advanced Skills</span></div>
+
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Kỹ thuật số & Công nghệ</span><span class="en">Digital & Tech</span></span><span class="skill-pct pct-sage">90%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sage" data-w="90"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Công cụ AI</span><span class="en">AI Tools</span></span><span class="skill-pct pct-sage">85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sage" data-w="85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Phân tích dữ liệu</span><span class="en">Data Analytics</span></span><span class="skill-pct pct-sage">82%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sage" data-w="82"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Bán hàng & Tiếp thị</span><span class="en">Sales & Marketing</span></span><span class="skill-pct pct-sage">88%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sage" data-w="88"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Sáng tạo nội dung</span><span class="en">Content Creation</span></span><span class="skill-pct pct-sage">86%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sage" data-w="86"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Lên lịch truyền thông xã hội</span><span class="en">Social Media Scheduling</span></span><span class="skill-pct pct-sage">89%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sage" data-w="89"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Thiết kế đồ họa</span><span class="en">Graphic Design</span></span><span class="skill-pct pct-sage">78%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sage" data-w="78"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Quản lý quan hệ khách hàng (CRM)</span><span class="en">Customer Relationship (CRM)</span></span><span class="skill-pct pct-sage">84%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sage" data-w="84"></div></div>
+        </div>
+      </div>
+
+      <!-- Workspace Skills -->
+      <div class="dash-col">
+        <div class="skill-group-title sg-ws">// <span class="vi">Không gian làm việc</span><span class="en">Workspace Proficiency</span></div>
+
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name">Google Workspace</span><span class="skill-pct pct-sky">92%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sky" data-w="92"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name">Microsoft Office 365</span><span class="skill-pct pct-sky">88%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sky" data-w="88"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name">Canva <span class="vi">(Thiết kế)</span><span class="en">(Design)</span></span><span class="skill-pct pct-sky">85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sky" data-w="85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name">Trello / Asana / ClickUp</span><span class="skill-pct pct-sky">87%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sky" data-w="87"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name">HubSpot CRM</span><span class="skill-pct pct-sky">82%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sky" data-w="82"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name"><span class="vi">Phần mềm lên lịch MXH</span><span class="en">Social Scheduler (Buffer/Later)</span></span><span class="skill-pct pct-sky">86%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sky" data-w="86"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span class="skill-name">Notion / Slack / Loom</span><span class="skill-pct pct-sky">90%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill fill-sky" data-w="90"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="section-header fade-in">
+    <span class="section-num">02 — <span class="vi">Chứng chỉ</span><span class="en">Certifications</span></span>
+    <h2 class="section-title"><span class="vi">Chứng chỉ & Đào tạo</span><span class="en">Certifications & Training</span></h2>
+    <div class="divider divider-rose"></div>
+  </div>
+  <div class="certs-grid fade-in">
+    <div class="cert-card">
+      <div class="cert-badge badge-hs">HubSpot Academy</div>
+      <div class="cert-title">ReOvps Certification</div>
+      <div class="cert-issuer">HubSpot · <span class="vi">Đã xác minh</span><span class="en">Verified</span></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge badge-hs">HubSpot Academy</div>
+      <div class="cert-title">Content Marketing Certification</div>
+      <div class="cert-issuer">HubSpot · <span class="vi">Đã xác minh</span><span class="en">Verified</span></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge badge-hs">HubSpot Academy</div>
+      <div class="cert-title">Social Media Marketing Certification</div>
+      <div class="cert-issuer">HubSpot · <span class="vi">Đã xác minh</span><span class="en">Verified</span></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge badge-gen">SEO</div>
+      <div class="cert-title">SEO Fundamentals</div>
+      <div class="cert-issuer"><span class="vi">Tiếp thị kỹ thuật số</span><span class="en">Digital Marketing</span></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge badge-gen">Marketing</div>
+      <div class="cert-title">Basics of Marketing</div>
+      <div class="cert-issuer"><span class="vi">Nền tảng tiếp thị căn bản</span><span class="en">Marketing Foundations</span></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge badge-gg">Google Cloud</div>
+      <div class="cert-title">Responsible AI — Google Cloud</div>
+      <div class="cert-issuer">Google · AI &amp; Ethics</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge badge-gg">Google Cloud</div>
+      <div class="cert-title">AI Boost Bites: Customer Insight with NotebookLM</div>
+      <div class="cert-issuer">Google · NotebookLM</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge badge-gg">Google Cloud</div>
+      <div class="cert-title">Looker Studio — Data Visualisation</div>
+      <div class="cert-issuer">Google · Looker Studio</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge badge-gg">Google Workspace</div>
+      <div class="cert-title">Google Workspace Security</div>
+      <div class="cert-issuer">Google · <span class="vi">Bảo mật không gian làm việc</span><span class="en">Workspace Security</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header fade-in">
+    <span class="section-num">03 — <span class="vi">Dịch vụ</span><span class="en">Services</span></span>
+    <h2 class="section-title"><span class="vi">Tôi cung cấp</span><span class="en">What I Offer</span></h2>
+    <div class="divider divider-sage"></div>
+  </div>
+  <div class="services-grid fade-in">
+    <div class="svc-card svc-c1">
+      <div class="svc-icon">📬</div>
+      <div class="svc-title"><span class="vi">Quản lý Admin & Hộp thư</span><span class="en">Admin & Inbox Management</span></div>
+      <div class="svc-desc vi">Quản lý email, lịch hẹn, tài liệu, báo cáo sau cuộc họp. Đảm bảo mọi thứ ngăn nắp, không bỏ sót deadline.</div>
+      <div class="svc-desc en">Email, calendar, documents, post-meeting reports. Nothing falls through the cracks.</div>
+      <span class="remote-tag">REMOTE ✓</span>
+    </div>
+    <div class="svc-card svc-c2">
+      <div class="svc-icon">📱</div>
+      <div class="svc-title"><span class="vi">Lên lịch & Quản lý Mạng xã hội</span><span class="en">Social Media Scheduling</span></div>
+      <div class="svc-desc vi">Lên kế hoạch, tạo & lên lịch nội dung đa nền tảng: Facebook, TikTok, Instagram, LinkedIn. Dùng Buffer, Later, Meta Business Suite.</div>
+      <div class="svc-desc en">Plan, create & schedule content across Facebook, TikTok, Instagram, LinkedIn using Buffer, Later, Meta Business Suite.</div>
+      <span class="remote-tag">REMOTE ✓</span>
+    </div>
+    <div class="svc-card svc-c3">
+      <div class="svc-icon">📊</div>
+      <div class="svc-title"><span class="vi">Phân tích dữ liệu & Báo cáo</span><span class="en">Data Analytics & Reporting</span></div>
+      <div class="svc-desc vi">Thu thập, xử lý, trực quan hóa dữ liệu. Báo cáo hiệu suất chiến dịch qua BigQuery, Looker Studio, Google Sheets.</div>
+      <div class="svc-desc en">Collect, process & visualise data. Campaign performance reports via BigQuery, Looker Studio, Google Sheets.</div>
+      <span class="remote-tag">REMOTE ✓</span>
+    </div>
+    <div class="svc-card svc-c4">
+      <div class="svc-icon">🤖</div>
+      <div class="svc-title"><span class="vi">Quy trình AI tự động hóa</span><span class="en">AI-Powered Workflows</span></div>
+      <div class="svc-desc vi">Tự động hóa tác vụ lặp lại, xây dựng prompt hiệu quả, tích hợp AI tools (Claude, ChatGPT, Gemini, NotebookLM) vào quy trình.</div>
+      <div class="svc-desc en">Automate repetitive tasks, build effective prompts, integrate AI tools (Claude, ChatGPT, Gemini, NotebookLM) into workflows.</div>
+      <span class="remote-tag">REMOTE ✓</span>
+    </div>
+    <div class="svc-card svc-c5">
+      <div class="svc-icon">🎨</div>
+      <div class="svc-title"><span class="vi">Chiến lược thương hiệu & Thiết kế</span><span class="en">Brand Strategy & Design</span></div>
+      <div class="svc-desc vi">Định vị thương hiệu, thiết kế visual bằng Canva, xây dựng bộ nhận diện thương hiệu nhất quán.</div>
+      <div class="svc-desc en">Brand positioning, visual design with Canva, building consistent brand identity systems.</div>
+      <span class="remote-tag">REMOTE ✓</span>
+    </div>
+    <div class="svc-card svc-c6">
+      <div class="svc-icon">🗂️</div>
+      <div class="svc-title"><span class="vi">Quản lý dự án</span><span class="en">Project Management</span></div>
+      <div class="svc-desc vi">Tổ chức dự án trên Trello, Asana, ClickUp. Tạo báo cáo sau mỗi cuộc họp. Theo dõi tiến độ minh bạch.</div>
+      <div class="svc-desc en">Organise projects on Trello, Asana, ClickUp. Write post-meeting reports. Transparent progress tracking.</div>
+      <span class="remote-tag">REMOTE ✓</span>
+    </div>
+    <div class="svc-card svc-c7">
+      <div class="svc-icon">🤝</div>
+      <div class="svc-title"><span class="vi">Quản lý quan hệ khách hàng</span><span class="en">Customer Relationship (CRM)</span></div>
+      <div class="svc-desc vi">Chăm sóc khách hàng, quản lý HubSpot CRM, theo dõi leads, xây dựng quy trình phản hồi chuyên nghiệp.</div>
+      <div class="svc-desc en">Customer care, HubSpot CRM management, lead tracking, professional response workflows.</div>
+      <span class="remote-tag">REMOTE ✓</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-header fade-in">
+    <span class="section-num">04 — Tools</span>
+    <h2 class="section-title"><span class="vi">Công cụ sử dụng</span><span class="en">Tech Stack</span></h2>
+    <div class="divider divider-rose"></div>
+  </div>
+  <div class="tools-section-grid fade-in">
+    <div>
+      <div class="tool-group-title tg-ai">🤖 AI Tools</div>
+      <div class="tools-chips">
+        <span class="tool-chip chip-ai">Claude AI</span>
+        <span class="tool-chip chip-ai">ChatGPT</span>
+        <span class="tool-chip chip-ai">Gemini</span>
+        <span class="tool-chip chip-ai">NotebookLM</span>
+        <span class="tool-chip chip-ai">Midjourney</span>
+        <span class="tool-chip chip-ai">Perplexity</span>
+      </div>
+
+      <div class="tool-group-title tg-pm" style="margin-top:1.2rem;">📋 <span class="vi">Quản lý dự án</span><span class="en">Project Management</span></div>
+      <div class="tools-chips">
+        <span class="tool-chip chip-pm">Trello</span>
+        <span class="tool-chip chip-pm">Asana</span>
+        <span class="tool-chip chip-pm">ClickUp</span>
+        <span class="tool-chip chip-pm">Notion</span>
+        <span class="tool-chip chip-pm">Airtable</span>
+      </div>
+
+      <div class="tool-group-title tg-sm" style="margin-top:1.2rem;">📱 <span class="vi">Mạng xã hội</span><span class="en">Social Media</span></div>
+      <div class="tools-chips">
+        <span class="tool-chip chip-sm">Buffer</span>
+        <span class="tool-chip chip-sm">Later</span>
+        <span class="tool-chip chip-sm">Meta Business Suite</span>
+        <span class="tool-chip chip-sm">TikTok Studio</span>
+        <span class="tool-chip chip-sm">Hootsuite</span>
+        <span class="tool-chip chip-sm">Canva</span>
+      </div>
+    </div>
+    <div>
+      <div class="tool-group-title tg-comm">📡 <span class="vi">Giao tiếp & Workspace</span><span class="en">Communication & Workspace</span></div>
+      <div class="tools-chips">
+        <span class="tool-chip chip-comm">Slack</span>
+        <span class="tool-chip chip-comm">Zoom</span>
+        <span class="tool-chip chip-comm">Google Meet</span>
+        <span class="tool-chip chip-comm">Loom</span>
+        <span class="tool-chip chip-comm">MS Teams</span>
+      </div>
+
+      <div class="tool-group-title" style="margin-top:1.2rem;color:var(--peach-d);">📊 <span class="vi">Dữ liệu & Văn phòng</span><span class="en">Data & Office</span></div>
+      <div class="tools-chips">
+        <span class="tool-chip chip-data">Google Workspace</span>
+        <span class="tool-chip chip-data">Microsoft 365</span>
+        <span class="tool-chip chip-data">BigQuery</span>
+        <span class="tool-chip chip-data">Looker Studio</span>
+        <span class="tool-chip chip-data">Google Sheets</span>
+        <span class="tool-chip chip-data">Excel</span>
+        <span class="tool-chip chip-data">HubSpot CRM</span>
+        <span class="tool-chip chip-data">Zapier</span>
+        <span class="tool-chip chip-data">GitHub</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REMOTE READINESS -->
+<section id="remote">
+  <div class="section-header fade-in">
+    <span class="section-num">05 — Remote</span>
+    <h2 class="section-title"><span class="vi">Năng lực làm việc Remote</span><span class="en">Remote Work Readiness</span></h2>
+    <div class="divider divider-lav"></div>
+  </div>
+
+  <div class="remote-grid fade-in">
+    <div class="remote-card">
+      <div class="remote-card-icon">🔒</div>
+      <div class="remote-card-title vi">Xử lý thông tin mật — Đã được chứng minh</div>
+      <div class="remote-card-title en">Confidentiality — Proven Track Record</div>
+      <div class="remote-card-desc vi">Kinh nghiệm đã được chứng minh trong việc xử lý dữ liệu nhạy cảm và thông tin mật của doanh nghiệp. Sẵn sàng ký NDA. Được đào tạo về Google Workspace Security.</div>
+      <div class="remote-card-desc en">Proven experience handling sensitive business data and confidential information. Ready to sign NDA. Trained in Google Workspace Security.</div>
+    </div>
+    <div class="remote-card">
+      <div class="remote-card-icon">⚡</div>
+      <div class="remote-card-title vi">Tốc độ mạng & Cơ sở hạ tầng</div>
+      <div class="remote-card-title en">Internet Speed & Infrastructure</div>
+      <div class="remote-card-desc vi">Kết nối internet ổn định, tốc độ cao phù hợp cho video call, chia sẻ file lớn và làm việc cloud liên tục. Có thiết bị backup sẵn sàng.</div>
+      <div class="remote-card-desc en">Stable, high-speed internet suitable for video calls, large file transfers and continuous cloud work. Backup devices ready.</div>
+    </div>
+    <div class="remote-card">
+      <div class="remote-card-icon">⌨️</div>
+      <div class="remote-card-title vi">Tốc độ đánh máy & Hiệu suất</div>
+      <div class="remote-card-title en">Typing Speed & Productivity</div>
+      <div class="remote-card-desc vi">60+ WPM với độ chính xác cao. Tạo báo cáo sau mỗi cuộc họp nhanh chóng và chuyên nghiệp. Thành thạo phím tắt trong tất cả công cụ.</div>
+      <div class="remote-card-desc en">60+ WPM with high accuracy. Fast, professional post-meeting reports. Proficient with shortcuts across all major tools.</div>
+    </div>
+    <div class="remote-card">
+      <div class="remote-card-icon">🗂️</div>
+      <div class="remote-card-title vi">Thành thạo công cụ quản lý dự án</div>
+      <div class="remote-card-title en">Project Management Tools — Expert</div>
+      <div class="remote-card-desc vi">Sử dụng thành thạo Trello, Asana, ClickUp, Notion. Biết cách thiết lập quy trình, phân công nhiệm vụ và theo dõi tiến độ từ xa.</div>
+      <div class="remote-card-desc en">Expert in Trello, Asana, ClickUp, Notion. Sets up workflows, assigns tasks and tracks progress entirely remotely.</div>
+    </div>
+    <div class="remote-card">
+      <div class="remote-card-icon">🌏</div>
+      <div class="remote-card-title vi">Linh hoạt múi giờ</div>
+      <div class="remote-card-title en">Timezone Flexibility</div>
+      <div class="remote-card-desc vi">Có thể sắp xếp giờ overlap với clients ở Việt Nam, Singapore, Úc, châu Âu, Mỹ. Không rào cản địa lý.</div>
+      <div class="remote-card-desc en">Can arrange overlap hours with clients in Vietnam, Singapore, Australia, Europe, USA. Zero geographical barriers.</div>
+    </div>
+    <div class="remote-card">
+      <div class="remote-card-icon">📋</div>
+      <div class="remote-card-title vi">Báo cáo minh bạch</div>
+      <div class="remote-card-title en">Transparent Reporting</div>
+      <div class="remote-card-desc vi">Cam kết phản hồi trong 2–4 giờ. Báo cáo tiến độ hàng ngày/tuần qua Slack, Notion hoặc email theo yêu cầu.</div>
+      <div class="remote-card-desc en">Response within 2–4 hours. Daily/weekly progress reports via Slack, Notion or email as required.</div>
+    </div>
+  </div>
+
+  <div class="remote-specs fade-in">
+    <div class="spec-card">
+      <div class="spec-val">60+</div>
+      <div class="spec-label">WPM Typing Speed</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-val">2-4h</div>
+      <div class="spec-label vi">Thời gian phản hồi</div><div class="spec-label en">Response Time</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-val">GMT+7</div>
+      <div class="spec-label vi">Múi giờ gốc · Linh hoạt</div><div class="spec-label en">Base Timezone · Flexible</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-val">NDA</div>
+      <div class="spec-label vi">Sẵn sàng ký NDA</div><div class="spec-label en">Ready to Sign</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-val">100%</div>
+      <div class="spec-label vi">Bảo mật thông tin</div><div class="spec-label en">Data Confidentiality</div>
+    </div>
+  </div>
+
+  <div class="timezone-bar fade-in">
+    <div class="tz-item"><div class="tz-city">Việt Nam</div><div class="tz-time" id="tz-vn">—</div></div>
+    <div class="tz-item"><div class="tz-city">Singapore</div><div class="tz-time">GMT+8</div></div>
+    <div class="tz-item"><div class="tz-city">Australia</div><div class="tz-time">GMT+10</div></div>
+    <div class="tz-item"><div class="tz-city">UK</div><div class="tz-time">GMT+1</div></div>
+    <div class="tz-item"><div class="tz-city">USA EST</div><div class="tz-time">GMT-4</div></div>
+    <div class="tz-item" style="font-size:.75rem;color:var(--ink2);max-width:180px;line-height:1.5;">
+      ✅ <span class="vi">Có thể sắp xếp overlap với tất cả múi giờ trên</span><span class="en">Can arrange overlap with all timezones listed</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-in">
+    <span class="section-num">06 — Portfolio</span>
+    <h2 class="section-title"><span class="vi">Dự án nổi bật</span><span class="en">Selected Work</span></h2>
+    <div class="divider divider-sage"></div>
+  </div>
+  <!-- Remote credibility note -->
+  <p class="fade-in" style="color:var(--ink2);font-size:0.85rem;margin-bottom:2rem;display:flex;align-items:center;gap:0.5rem;">
+    <span style="background:linear-gradient(135deg,var(--rose),var(--peach));color:#fff;font-size:0.62rem;font-weight:700;letter-spacing:0.1em;padding:0.2rem 0.7rem;border-radius:100px;">🌐 REMOTE VERIFIED</span>
+    <span class="vi">Tất cả dự án được thực hiện 100% từ xa — không văn phòng, không giới hạn địa lý.</span>
+    <span class="en">All projects delivered 100% remotely — no office, no geographical limits.</span>
+  </p>
+
+  <div class="project-grid fade-in">
+
+    <div class="project-card">
+      <div class="project-tag">🌐 Remote Freelance · Brand Strategy · Social Media</div>
+      <div class="project-title vi">Nàng Tấm — VA & Chiến lược thương hiệu từ xa</div>
+      <div class="project-title en">Nàng Tấm — Remote VA & Brand Strategy</div>
+      <div class="project-desc vi">Đảm nhận toàn bộ vai trò VA từ xa: quản lý lịch, email, tạo và lên lịch nội dung đa nền tảng, theo dõi hiệu suất, báo cáo hàng tuần cho client — tất cả hoàn toàn remote qua Slack và Google Workspace.</div>
+      <div class="project-desc en">Full remote VA role: calendar & email management, content creation & scheduling across platforms, performance tracking, weekly reports to client — entirely remote via Slack and Google Workspace.</div>
+      <div class="project-result">📈 300% ROI · 3 months · Zero paid ads · 100% Remote delivery</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">🌐 Remote Contract · Admin · Project Coordination</div>
+      <div class="project-title vi">Hỗ trợ điều phối dự án từ xa — E-commerce Client</div>
+      <div class="project-title en">Remote Project Coordination — E-commerce Client</div>
+      <div class="project-desc vi">Hỗ trợ quản lý dự án từ xa cho client thương mại điện tử: tổ chức tài liệu trên Notion, điều phối nhiệm vụ qua Trello, tạo báo cáo sau mỗi cuộc họp qua Zoom, xử lý thông tin mật của doanh nghiệp.</div>
+      <div class="project-desc en">Remote project support for e-commerce client: document organisation in Notion, task coordination via Trello, post-meeting reports after Zoom calls, handling confidential business data.</div>
+      <div class="project-result">✅ On-time delivery · Async workflow · Full remote · NDA signed</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">🌐 Remote · Data Analytics · Google Cloud</div>
+      <div class="project-title vi">Phân tích dữ liệu từ xa — BigQuery & Looker Studio</div>
+      <div class="project-title en">Remote Data Analytics — BigQuery & Looker Studio</div>
+      <div class="project-desc vi">Xây dựng pipeline dữ liệu và dashboard báo cáo từ xa: BigQuery (GCP Course 5), Cloud Shell, Looker Studio. Giao nộp báo cáo định kỳ hoàn toàn online cho stakeholder.</div>
+      <div class="project-desc en">Built remote data pipelines and reporting dashboards: BigQuery (GCP Course 5), Cloud Shell, Looker Studio. Delivered periodic reports entirely online to stakeholders.</div>
+      <div class="project-result">🎓 Google Skills Certified · Looker Studio Dashboard · Remote-only</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">🌐 Remote · AI Automation · Workflow Builder</div>
+      <div class="project-title vi">AI Workflow — Tự động hóa quy trình VA từ xa</div>
+      <div class="project-title en">AI Workflow — Remote VA Automation</div>
+      <div class="project-desc vi">Xây dựng MCP Server (Node.js) và tích hợp AI tools (Claude, ChatGPT, NotebookLM) vào quy trình VA: tự động tóm tắt cuộc họp, soạn email, tạo báo cáo — giảm 60% thời gian xử lý tác vụ lặp lại.</div>
+      <div class="project-desc en">Built MCP Server (Node.js) and integrated AI tools (Claude, ChatGPT, NotebookLM) into VA workflows: auto-summarise meetings, draft emails, generate reports — 60% reduction in repetitive task time.</div>
+      <div class="project-result">🤖 MCP Server · AI-powered · 60% efficiency gain · Fully remote</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">🌐 Remote · Social Media · Content Scheduling</div>
+      <div class="project-title vi">Quản lý MXH từ xa — Lên lịch & Phân tích đa nền tảng</div>
+      <div class="project-title en">Remote Social Media Management — Multi-platform</div>
+      <div class="project-desc vi">Quản lý toàn bộ lịch đăng bài từ xa cho nhiều client: Facebook, TikTok, Instagram, LinkedIn. Dùng Buffer, Later, Meta Business Suite. Báo cáo phân tích hàng tháng gửi qua Loom + Google Docs.</div>
+      <div class="project-desc en">Managed full posting calendars remotely for multiple clients across Facebook, TikTok, Instagram, LinkedIn using Buffer, Later, Meta Business Suite. Monthly analytics reports via Loom + Google Docs.</div>
+      <div class="project-result">📱 5 platforms · Multi-client · Async delivery · 100% Remote</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">🌐 Remote · Hackathon · Web · Accessibility</div>
+      <div class="project-title">AccessHub — Code Without Barriers 2026</div>
+      <div class="project-desc vi">Tham gia hackathon quốc tế 100% online: xây dựng sản phẩm web HTML/CSS/JS về khả năng tiếp cận (accessibility). Phối hợp nhóm từ xa, giao nộp sản phẩm hoàn chỉnh trong thời hạn.</div>
+      <div class="project-desc en">International hackathon 100% online: built an HTML/CSS/JS accessibility web product. Remote team collaboration, on-time product delivery under deadline.</div>
+      <div class="project-result">🏆 Code Without Barriers Hackathon 2026 · International Remote Team</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header fade-in">
+    <span class="section-num">07 — <span class="vi">Liên hệ</span><span class="en">Contact</span></span>
+    <h2 class="section-title"><span class="vi">Làm việc cùng nhau</span><span class="en">Let's Work Together</span></h2>
+    <div class="divider divider-lav"></div>
+  </div>
+  <div class="contact-grid fade-in">
+    <div>
+      <p class="contact-intro vi">Tôi sẵn sàng hỗ trợ doanh nghiệp của bạn từ xa — không giới hạn địa lý, không giới hạn múi giờ. Hãy kết nối để thảo luận về cách tôi có thể giúp bạn vận hành hiệu quả hơn.</p>
+      <p class="contact-intro en">Ready to support your business remotely — no geographical limits, no timezone barriers. Let's connect and discuss how I can help you operate more efficiently.</p>
+      <div class="remote-pill" style="margin-top:2rem;width:fit-content;margin-bottom:0;">
+        <span class="remote-dot"></span>
+        <span class="vi">Đang nhận dự án remote</span>
+        <span class="en">Currently accepting remote projects</span>
+      </div>
+    </div>
+    <div class="contact-list">
+      <a class="contact-item" href="https://www.linkedin.com/in/le-vivian-3673033b4" target="_blank">
+        <span class="contact-item-icon">💼</span>
+        <span><span class="contact-item-label">LinkedIn</span><span class="contact-item-val">Le Vivian — LinkedIn Profile</span></span>
+      </a>
+      <a class="contact-item" href="https://github.com/L-TH-NHI" target="_blank">
+        <span class="contact-item-icon">⌨️</span>
+        <span><span class="contact-item-label">GitHub</span><span class="contact-item-val">L-TH-NHI</span></span>
+      </a>
+      <a class="contact-item" href="mailto:aerikael1112@gmail.com">
+        <span class="contact-item-icon">✉️</span>
+        <span><span class="contact-item-label">Email</span><span class="contact-item-val">aerikael1112@gmail.com</span></span>
+      </a>
+      <a class="contact-item" href="#">
+        <span class="contact-item-icon">📍</span>
+        <span><span class="contact-item-label">Location</span><span class="contact-item-val">Việt Nam · Remote Worldwide 🌐</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Nhi Le</span> · Virtual Assistant Portfolio · <span>Remote-First ∞</span> · Crafted with intention
+</footer>
+
+<script>
+// ─── LANGUAGE TOGGLE ───
+function setLang(lang) {
+  document.documentElement.setAttribute('data-lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.trim() === lang.toUpperCase());
+  });
+}
+
+// ─── SKILL BAR ANIMATION ───
+const bars = document.querySelectorAll('.skill-bar-fill');
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const w = e.target.dataset.w;
+      setTimeout(() => { e.target.style.width = w + '%'; }, 250);
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+bars.forEach(b => barObs.observe(b));
+
+// ─── FADE IN ───
+const faders = document.querySelectorAll('.fade-in');
+const fadeObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+faders.forEach(f => fadeObs.observe(f));
+document.querySelectorAll('#hero .fade-in').forEach(el => {
+  setTimeout(() => el.classList.add('visible'), 100);
+});
+
+// ─── LIVE CLOCK VN ───
+function updateClock() {
+  const el = document.getElementById('tz-vn');
+  if (!el) return;
+  el.textContent = new Intl.DateTimeFormat('vi-VN', {
+    timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', hour12: false
+  }).format(new Date());
+}
+updateClock();
+setInterval(updateClock, 30000);
+</script>
+</body>
+</html>
